@@ -1,0 +1,40 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: bigsi
+  labels:
+    app: bigsi  
+    tier: front    
+spec:
+  selector:
+    matchLabels:
+      app: bigsi
+  template:
+    metadata:
+      labels:
+        app: bigsi  
+    spec:    
+      volumes:
+        - name: task-pv-storage
+          persistentVolumeClaim:
+           claimName: task-pv-claim   
+        - name: configmap-volume
+          configMap:
+            name: bigsi-config              
+      containers:
+      - name: bigsi
+        image: phelimb/bigsi
+        command: ["/bin/sh"]
+        args: ["-c","uwsgi --enable-threads --http 0.0.0.0:8001 --wsgi-file bigsi/__main__.py --callable __hug_wsgi__ --processes=1 --buffer-size=32768 --harakiri=300000"]
+        ports:
+          - containerPort: 8001
+        volumeMounts:
+          - mountPath: "/data/"
+            name: task-pv-storage
+          - mountPath: /etc/bigsi/conf/
+            name: configmap-volume  
+        envFrom:
+          - configMapRef:
+              name: bigsi-env                         
+
+

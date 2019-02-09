@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bigsi
+  labels:
+    app: bigsi
+spec:
+  type: NodePort
+  ports:
+  - port: 8001
+    targetPort: 8001     
+  selector:
+    app: bigsi

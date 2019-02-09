@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  config.yaml: |-
+    h: 1
+    k: 31
+    m: 10000
+    nproc: 1
+    storage-engine: berkeleydb
+    storage-config:
+      filename: /data/bigsi
+      flag: "c" ## Change to 'r' for read-only access
+kind: ConfigMap
+metadata:
+  name: bigsi-config
+
