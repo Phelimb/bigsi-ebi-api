@@ -1,6 +1,8 @@
 import redis
 import json
 from bigsi_aggregator import constants
+from bigsi_aggregator.settings import REDIS_IP
+
 import hashlib
 
 DEFAULT_SEARCH_RESULTS_TTL = 48 * 60 * 60  # 2 days
@@ -14,7 +16,7 @@ def generate_search_results_key(_id):
     return "sequence_search_results:%s" % _id
 
 
-r = redis.StrictRedis(decode_responses=True)
+r = redis.StrictRedis(REDIS_IP, decode_responses=True)
 
 # class SequenceSearchResult:
 #      def __init__(self, percent_kmers_found, ):

@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: bigsi-aggregator
+  labels:
+    app: bigsi-aggregator  
+    tier: front    
+spec:
+  selector:
+    matchLabels:
+      app: bigsi-aggregator
+  template:
+    metadata:
+      labels:
+        app: bigsi-aggregator  
+    spec:    
+         
+      containers:
+      - name: bigsi-aggregator
+        image: phelimb/bigsi-aggregator
+        imagePullPolicy: Never #local
+        command: ["/bin/sh"]
+        args: ["-c","uwsgi  --harakiri 300 --socket-timeout 300 --single-interpreter  --enable-threads --socket :8001 --buffer-size=65535  --manage-script-name --mount bigsi_aggregator=bigsi_aggregator:app"]
+        ports:
+          - containerPort: 8001
+        envFrom:
+          - configMapRef:
+              name: bigsi-aggregator-env                         
+
+
