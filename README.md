@@ -25,9 +25,9 @@ kubectl create -f k8/
 
 
 ## TODO
-[] POST to /search will create a search objects with a unique ID
-[] POST to /search triggers a "sub_index_search"
-[] Celery task "sub_index_search" to handle POST request to a BIGSI and retrys
-[] "sub_index_search" updates Search object by adding results to the cache as they come in (HSET by sample ID) and marks search as complete. Once all searches are complete the status of Search is set to "complete" and the caches are merged and stored in a new cache. 
+[X] POST to /search will create a search objects with a unique ID
+[X] POST to /search triggers a "sub_index_search"
+[X] Celery task "sub_index_search" to handle POST request to a BIGSI and retrys
+[X] "sub_index_search" updates Search object by adding results to the cache as they come in (HSET by sample ID) and marks search as complete. Once all searches are complete the status of Search is set to "complete" and the caches are merged and stored in a new cache. 
+[X] GET /search/:search_id returns aggregate of search results 
 [] Metadata is indexed by sample_id and merged with the results of sub_index_search.
-[] GET /search/:search_id returns aggregate of search results 

@@ -1,8 +1,4 @@
 from bigsi_aggregator.tasks import search_bigsi_and_update_results
-import requests
-
-
-import json
 
 
 class BigsiAggregator:
