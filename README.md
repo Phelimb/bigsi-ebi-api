@@ -21,7 +21,6 @@ kubectl create -f k8/pv-claim.yaml
 kubectl create -f k8/env.yaml
 kubectl create -f k8/bigsi-config.yaml
 kubectl create -f k8/
-
 ```
 
 
