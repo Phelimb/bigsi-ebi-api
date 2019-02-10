@@ -17,14 +17,23 @@ parser.add_argument("score", type=bool, help="Score the search results", default
 
 bigsi_aggregator = BigsiAggregator(BIGSI_URLS)
 
-resource_fields = {
-    "id": fields.Integer,
+search_results_fields = {
+    "percent_kmers_found": fields.Integer,
+    "num_kmers": fields.String,
+    "num_kmers_found": fields.String,
+    "sample_name": fields.String,
+    # "metadata": fields.String,  ## In future, metadata associated with 'sampled_name' will be returned
+}
+
+search_fields = {
+    "id": fields.String,
     constants.SEQUENCE_QUERY_KEY: fields.String,
     constants.THRESHOLD_KEY: fields.Integer,
     constants.SCORE_KEY: fields.Boolean,
     constants.COMPLETED_BIGSI_QUERIES_COUNT_KEY: fields.Integer,
     constants.TOTAL_BIGSI_QUERIES_COUNT_KEY: fields.Integer,
-    constants.RESULTS_KEY: fields.String,
+    constants.RESULTS_KEY: fields.Nested(search_results_fields),
+    "status": fields.String,
 }
 
 
@@ -36,10 +45,10 @@ class SequenceSearchListResource(Resource):
         )
         ## results are stored in the sequence search object
         bigsi_aggregator.search_and_aggregate(sequence_search)
-        return marshal(sequence_search, resource_fields), 201
+        return marshal(sequence_search, search_fields), 201
 
 
 class SequenceSearchResource(Resource):
-    @marshal_with(resource_fields)
+    @marshal_with(search_fields)
     def get(self, sequence_search_id):
         return SequenceSearch.get_by_id(sequence_search_id)

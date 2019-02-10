@@ -26,15 +26,12 @@ class BigsiAggregator:
 
     def search_and_aggregate(self, sequence_search):
         for url in self.bigsi_urls:
-            print(url, sequence_search.id)
             result = search_bigsi_and_update_results(url, sequence_search.id)
 
 
 @celery.task(name="search_bigsi_and_update_results")
 def search_bigsi_and_update_results(url, sequence_search_id):
-    print("hi!", url, sequence_search_id)
     sequence_search = SequenceSearch.get_by_id(sequence_search_id)
-    print("hi2", sequence_search.seq)
     bigsi_client = BigsiClient(url)
     bigsi_search_results = bigsi_client.search(
         sequence_search.seq, sequence_search.threshold, sequence_search.score
