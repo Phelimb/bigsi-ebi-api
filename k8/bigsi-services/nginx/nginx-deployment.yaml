@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: bigsi-nginx
+  labels:
+    app: bigsi-nginx
+    tier: front    
+spec:
+  selector:
+    matchLabels:
+      app: bigsi-nginx
+  template:
+    metadata:
+      labels:
+        app: bigsi-nginx
+    spec:
+      volumes:       
+      - name: configmap-volume
+        configMap:
+          name: bigsinginxconfigmap
+      containers:
+      - name: bigsi-nginx
+        image: nginx
+        command: ["nginx"]
+        args: ["-c","/etc/nginx/conf.d/nginx.conf" ,"-g","daemon off;" ]           
+        ports:
+          - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: configmap-volume                  

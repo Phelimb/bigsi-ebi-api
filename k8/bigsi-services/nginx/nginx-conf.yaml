@@ -1,0 +1,31 @@
+apiVersion: v1
+data:
+  nginx.conf: "user  nginx;\nworker_processes  1;\n\nerror_log  /var/log/nginx/error.log
+    warn;\npid        /var/run/nginx.pid;\n\nevents {\n    worker_connections  10024;\n}\n\n\nhttp
+    {\n\n    include       /etc/nginx/mime.types;\n    default_type  application/octet-stream;\n\n
+    \   log_format  main  '$remote_addr ($realip_remote_addr) - $remote_user [$time_local]
+    \"$request\" '\n                      '$status $body_bytes_sent \"$http_referer\"
+    '\n                      '\"$http_user_agent\" \"$http_x_forwarded_for\"';\n\n
+    \   access_log  /var/log/nginx/access.log  main;\n    sendfile        on;\n    #tcp_nopush
+    \    on;\n\n    # Tune nginx keepalives to work with the GCP HTTP(S) Load Balancer:\n
+    \   keepalive_timeout 650;\n    keepalive_requests 10000;\n    proxy_buffers 16
+    16k;  \n    proxy_buffer_size 16k;    \n\n    gzip  on;\n    gzip_proxied any;\n
+    \   gzip_types text/plain text/css application/json application/javascript text/xml
+    application/xml application/xml+rss text/javascript;\n\n\n\n    upstream bigsi
+    {\n        server bigsi:8001;\n    } \n\n    limit_req_zone $remote_addr zone=bigsi:100m
+    rate=10r/s;  \n\n    server {\n        listen 80;\n        listen 443;\n        #if
+    ($http_x_forwarded_proto = \"http\") {\n        #    return 301 https://$host$request_uri;\n
+    \       #}        \n        server_name *.bigsi.io; # substitute your machine's
+    IP address or FQDN        \n        charset     utf-8;\n        # max upload size\n
+    \       client_max_body_size 75M;   # adjust to taste            \n\n        location
+    / {\n            proxy_set_header    Host             $host;\n            proxy_set_header
+    \   X-Real-IP        $remote_addr;       \n            proxy_pass http://bigsi;\n
+    \       }\n        }\n\n}"
+kind: ConfigMap
+metadata:
+  creationTimestamp: 2019-02-10T18:52:01Z
+  name: bigsinginxconfigmap
+  namespace: default
+  resourceVersion: "35954"
+  selfLink: /api/v1/namespaces/default/configmaps/bigsinginxconfigmap
+  uid: f33f46f7-2d64-11e9-acbd-080027c52e88

@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+    tier: front    
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      volumes:       
+      - name: configmap-volume
+        configMap:
+          name: nginxconfigmap
+      containers:
+      - name: nginx
+        image: nginx
+        command: ["nginx"]
+        args: ["-c","/etc/nginx/conf.d/nginx.conf" ,"-g","daemon off;" ]           
+        ports:
+          - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: configmap-volume                  

@@ -12,7 +12,7 @@ class BigsiClient:
         self.base_url = url
 
     def search(self, seq, threshold, score):
-        url = "http://{base_url}/search".format(base_url=self.base_url)
+        url = "{base_url}/search".format(base_url=self.base_url)
         results = requests.post(
             url,
             data={"seq": seq, "threshold": int(threshold) / 100, "score": int(score)},
