@@ -20,7 +20,7 @@ spec:
         image: phelimb/bigsi-aggregator
         imagePullPolicy: Never #local
         command: ["/bin/sh"]
-        args: ["-c","uwsgi  --harakiri 300 --socket-timeout 300 --single-interpreter  --enable-threads --socket :8001 --buffer-size=65535  --manage-script-name --mount bigsi_aggregator=bigsi_aggregator:app"]
+        args: ["-c","uwsgi --harakiri 300  --buffer-size=65535  --socket 0.0.0.0:8001 --protocol=http -w wsgi"]
         ports:
           - containerPort: 8001
         envFrom:

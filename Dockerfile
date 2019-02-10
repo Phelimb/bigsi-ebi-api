@@ -10,5 +10,5 @@ RUN pip install -r requirements.txt
 RUN pip install uWSGI==2.0.18
 EXPOSE 8001
 
-CMD uwsgi  --harakiri 300 --socket-timeout 300 --single-interpreter  --enable-threads --socket :8001 --buffer-size=65535  --manage-script-name --mount bigsi_aggregator=bigsi_aggregator:app
+CMD uwsgi --harakiri 300  --buffer-size=65535  --socket 0.0.0.0:8001 --protocol=http -w wsgi
 

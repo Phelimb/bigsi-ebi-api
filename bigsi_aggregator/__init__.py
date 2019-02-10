@@ -8,8 +8,8 @@ from bigsi_aggregator.settings import REDIS_IP
 app = Flask(__name__)
 api = Api(app)
 
-api.add_resource(SequenceSearchListResource, "/searches/")
-api.add_resource(SequenceSearchResource, "/searches/<sequence_search_id>")
+api.add_resource(SequenceSearchListResource, "/api/v1/searches/")
+api.add_resource(SequenceSearchResource, "/api/v1/searches/<sequence_search_id>")
 
 
 app.config.update(
@@ -21,4 +21,4 @@ app.config.update(
 celery.init_app(app)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
