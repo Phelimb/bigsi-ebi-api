@@ -22,6 +22,16 @@ search_results_fields = {
     "num_kmers": fields.String,
     "num_kmers_found": fields.String,
     "sample_name": fields.String,
+    "score": fields.Float,
+    "mismatches": fields.Float,
+    "nident": fields.Float,
+    "pident": fields.Float,
+    "length": fields.Float,
+    "evalue": fields.Float,
+    "pvalue": fields.Float,
+    "log_evalue": fields.Float,
+    "log_pvalue": fields.Float,
+    "kmer-presence": fields.String
     # "metadata": fields.String,  ## In future, metadata associated with 'sampled_name' will be returned
 }
 
