@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: bigsi-aggregator
+  name: bigsi-aggregator-api-service
   labels:
-    app: bigsi-aggregator
+    app: bigsi-aggregator-api
 spec:
   type: NodePort
   ports:
   - port: 8001
     targetPort: 8001     
   selector:
-    app: bigsi-aggregator
+    app: bigsi-aggregator-api

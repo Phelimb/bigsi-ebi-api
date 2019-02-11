@@ -1,18 +1,18 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: bigsi-aggregator
+  name: bigsi-aggregator-api-deployment
   labels:
-    app: bigsi-aggregator  
+    app: bigsi-aggregator-api  
     tier: front    
 spec:
   selector:
     matchLabels:
-      app: bigsi-aggregator
+      app: bigsi-aggregator-api
   template:
     metadata:
       labels:
-        app: bigsi-aggregator  
+        app: bigsi-aggregator-api  
     spec:    
          
       containers:

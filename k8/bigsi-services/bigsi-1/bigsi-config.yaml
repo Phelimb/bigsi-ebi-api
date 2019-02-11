@@ -11,5 +11,5 @@ data:
       flag: "c" ## Change to 'r' for read-only access
 kind: ConfigMap
 metadata:
-  name: bigsi-config
+  name: bigsi-1-config
 

@@ -1,25 +1,25 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: nginx
+  name: bigsi-aggregator-nginx-deployment
   labels:
-    app: nginx
+    app: bigsi-aggregator-nginx
     tier: front    
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: bigsi-aggregator-nginx
   template:
     metadata:
       labels:
-        app: nginx
+        app: bigsi-aggregator-nginx
     spec:
       volumes:       
       - name: configmap-volume
         configMap:
-          name: nginxconfigmap
+          name: bigsi-aggregator-nginxconfigmap
       containers:
-      - name: nginx
+      - name: bigsi-aggregator-nginx
         image: nginx
         command: ["nginx"]
         args: ["-c","/etc/nginx/conf.d/nginx.conf" ,"-g","daemon off;" ]           

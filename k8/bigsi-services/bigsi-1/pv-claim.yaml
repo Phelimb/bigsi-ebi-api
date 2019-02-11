@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: task-pv-claim
+  name: pv-claim-for-bigsi-1
 spec:
   storageClassName: manual
   accessModes:

@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: bigsi-aggregator-nginx-service
   labels:
-    app: nginx
+    app: bigsi-aggregator-nginx
 spec:
   type: NodePort
   ports:
@@ -11,4 +11,4 @@ spec:
     targetPort: 80  
     name: http  
   selector:
-    app: nginx
+    app: bigsi-aggregator-nginx
