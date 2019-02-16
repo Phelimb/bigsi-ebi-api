@@ -98,3 +98,4 @@ root@bigsi-aggregator-nginx-deployment-799c6f5596-5mlcw:/# curl localhost/api/v1
 
 ## TODO
 [] Metadata service which is indexed by sample_id and merged with the results of searches.
+[] HTTPS
