@@ -6,6 +6,9 @@ from bigsi_aggregator.views import SequenceSearchResource
 from bigsi_aggregator.settings import REDIS_IP
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+
 api = Api(app)
 
 api.add_resource(SequenceSearchListResource, "/api/v1/searches/")
