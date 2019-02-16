@@ -11,4 +11,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data" ## Make sure this path exists on the local machine
+    path: "/ssd0" ## Make sure this path exists on the local machine

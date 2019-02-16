@@ -7,7 +7,7 @@ data:
     nproc: 1
     storage-engine: berkeleydb
     storage-config:
-      filename: /data/bigsi
+      filename: /data/all-microbial-bigsi-v03
       flag: "c" ## Change to 'r' for read-only access
 kind: ConfigMap
 metadata:
