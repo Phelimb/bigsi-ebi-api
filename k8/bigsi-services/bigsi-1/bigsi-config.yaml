@@ -7,7 +7,7 @@ data:
     nproc: 1
     storage-engine: berkeleydb
     storage-config:
-      filename: /data/bigsi
+      filename: /data/bigsi ## /data is the mount path, so don't change this to a local path
       flag: "c" ## Change to 'r' for read-only access
 kind: ConfigMap
 metadata:

@@ -22,7 +22,7 @@ e.g.
 kubectl create -f k8/bigsi-services/bigsi-1/bigsi-config.yaml
 kubectl create -f k8/bigsi-services/bigsi-1/env.yaml
 ## Volume mounts
-kubectl create -f k8/bigsi-services/bigsi-1/pv-volume.yaml
+kubectl create -f k8/bigsi-services/bigsi-1/pv-volume.yaml ## This needs to be updated to use a local path! 
 kubectl create -f k8/bigsi-services/bigsi-1/pv-claim.yaml
 ## BIGSI API services
 kubectl create -f k8/bigsi-services/bigsi-1/bigsi-service.yaml
