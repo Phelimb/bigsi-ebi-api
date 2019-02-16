@@ -96,6 +96,17 @@ root@bigsi-aggregator-nginx-deployment-799c6f5596-5mlcw:/# curl localhost/api/v1
 
 ```
 
+## Deploy a new image
+```
+kubectl set image deployment/bigsi-aggregator-api-deployment bigsi-aggregator=phelimb/bigsi-aggregator:39e43b3
+kubectl set image deployment/bigsi-aggregator-worker-deployment bigsi-aggregator-worker=phelimb/bigsi-aggregator:39e43b3
+
+kubectl rollout status deployments bigsi-aggregator-api-deployment
+kubectl rollout status deployments bigsi-aggregator-worker-deployment 
+
+```
+
+
 ## TODO
 [] Metadata service which is indexed by sample_id and merged with the results of searches.
 [] HTTPS

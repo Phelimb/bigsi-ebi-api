@@ -18,7 +18,6 @@ spec:
       containers:
       - name: bigsi-aggregator
         image: phelimb/bigsi-aggregator
-        imagePullPolicy: Never #local
         command: ["/bin/sh"]
         args: ["-c","uwsgi --harakiri 300  --buffer-size=65535  --socket 0.0.0.0:8001 --protocol=http -w wsgi"]
         ports:
