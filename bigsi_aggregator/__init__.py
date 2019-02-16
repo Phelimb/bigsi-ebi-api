@@ -1,4 +1,6 @@
 from flask import Flask
+from flask_cors import CORS
+
 from flask_restful import Api
 from bigsi_aggregator.extensions import celery
 from bigsi_aggregator.views import SequenceSearchListResource
