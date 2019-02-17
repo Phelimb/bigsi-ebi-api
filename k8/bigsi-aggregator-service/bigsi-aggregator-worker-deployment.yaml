@@ -16,6 +16,7 @@ spec:
       containers:
       - name: bigsi-aggregator-worker
         image: phelimb/bigsi-aggregator
+        imagePullPolicy: Never
         command: ["celery"]
         args: ["-A", "bigsi_aggregator.celery", "worker","--concurrency=1"]
         envFrom:
