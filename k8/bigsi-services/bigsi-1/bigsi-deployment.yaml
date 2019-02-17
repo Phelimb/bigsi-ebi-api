@@ -25,7 +25,7 @@ spec:
       - name: bigsi-1
         image: phelimb/bigsi
         command: ["/bin/sh"]
-        args: ["-c","uwsgi --enable-threads --http 0.0.0.0:8001 --wsgi-file bigsi/__main__.py --callable __hug_wsgi__ --processes=1 --buffer-size=32768 --harakiri=300000"]
+        args: ["-c","uwsgi --enable-threads --http 0.0.0.0:8001 --wsgi-file bigsi/__main__.py --callable __hug_wsgi__ --processes=4 --buffer-size=32768 --harakiri=300000"]
         ports:
           - containerPort: 8001
         volumeMounts:

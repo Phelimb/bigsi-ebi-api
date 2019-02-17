@@ -18,10 +18,10 @@ parser.add_argument("score", type=bool, help="Score the search results", default
 bigsi_aggregator = BigsiAggregator(BIGSI_URLS)
 
 search_results_fields = {
-    "percent_kmers_found": fields.Integer,
-    "num_kmers": fields.String,
-    "num_kmers_found": fields.String,
     "sample_name": fields.String,
+    "percent_kmers_found": fields.Integer,
+    "num_kmers_found": fields.String,
+    "num_kmers": fields.String,
     "score": fields.Float,
     "mismatches": fields.Float,
     "nident": fields.Float,
@@ -31,7 +31,7 @@ search_results_fields = {
     "pvalue": fields.Float,
     "log_evalue": fields.Float,
     "log_pvalue": fields.Float,
-    "kmer-presence": fields.String
+    "kmer-presence": fields.String,
     # "metadata": fields.String,  ## In future, metadata associated with 'sampled_name' will be returned
 }
 
@@ -44,6 +44,7 @@ search_fields = {
     constants.TOTAL_BIGSI_QUERIES_COUNT_KEY: fields.Integer,
     constants.RESULTS_KEY: fields.Nested(search_results_fields),
     "status": fields.String,
+    "citation": fields.String,
 }
 
 

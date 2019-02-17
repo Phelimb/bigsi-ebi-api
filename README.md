@@ -98,8 +98,8 @@ root@bigsi-aggregator-nginx-deployment-799c6f5596-5mlcw:/# curl localhost/api/v1
 
 ## Deploy a new image
 ```
-kubectl set image deployment/bigsi-aggregator-api-deployment bigsi-aggregator=phelimb/bigsi-aggregator:39e43b3
-kubectl set image deployment/bigsi-aggregator-worker bigsi-aggregator-worker=phelimb/bigsi-aggregator:39e43b3
+kubectl set image deployment/bigsi-aggregator-api-deployment bigsi-aggregator=phelimb/bigsi-aggregator:936dc9f
+kubectl set image deployment/bigsi-aggregator-worker bigsi-aggregator-worker=phelimb/bigsi-aggregator:936dc9f
 
 kubectl rollout status deployments bigsi-aggregator-api-deployment
 kubectl rollout status deployments bigsi-aggregator-worker 
@@ -109,4 +109,10 @@ kubectl rollout status deployments bigsi-aggregator-worker
 
 ## TODO
 [] Metadata service which is indexed by sample_id and merged with the results of searches.
+[] Filter responses with DELETED SAMPLE
+[] Return citation
+[] Sort by Score, then Percent Kmers Found
+[] BUG: Scored queries not returning score
 [] HTTPS
+[] BIGSI results output should have the same format as bigsi aggregator
+

@@ -45,6 +45,7 @@ class SequenceSearch:
         self.ttl = ttl
         self.completed_bigsi_queries = completed_bigsi_queries
         self.results = results
+        self.citation = "http://dx.doi.org/10.1038/s41587-018-0010-1"
 
     @classmethod
     def create(cls, seq, threshold, score, total_bigsi_queries):

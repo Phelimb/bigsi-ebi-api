@@ -1,6 +1,7 @@
 FROM python:3.6
 ENV PYTHONUNBUFFERED 1
 RUN apt-get update -y
+RUN apt-get install curl -y
 
 RUN mkdir /bigsi-aggregator
 WORKDIR /bigsi-aggregator
