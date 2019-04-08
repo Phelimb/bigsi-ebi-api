@@ -10,7 +10,7 @@ data:
   config.yaml: |-
     h: 1
     k: 31
-    m: 10000
+    m: 28000000
     nproc: 1
     storage-engine: berkeleydb
     storage-config:
@@ -45,11 +45,11 @@ spec:
             name: bigsi-1-config              
       containers:
       - name: bigsi-1
-        image: phelimb/bigsi
+        image: phelimb/bigsi:080419
         command: ["/bin/sh"]
-        args: ["-c","uwsgi --enable-threads --http 0.0.0.0:8001 --wsgi-file bigsi/__main__.py --callable __hug_wsgi__ --processes=4 --buffer-size=32768 --harakiri=300000"]
+        args: ["-c","uwsgi --enable-threads --http :80 --wsgi-file bigsi/__main__.py --callable __hug_wsgi__ --processes=4 --buffer-size=32768 --harakiri=300000"]
         ports:
-          - containerPort: 8001
+          - containerPort: 80
         volumeMounts:
           - mountPath: "/data/"
             name: pv-storage-for-bigsi-1
@@ -68,9 +68,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8001
-    targetPort: 8001
+  - port: 80
   selector:
     app: bigsi-1
+
 
 
