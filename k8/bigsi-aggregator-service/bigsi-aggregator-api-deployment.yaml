@@ -14,7 +14,6 @@ spec:
       labels:
         app: bigsi-aggregator-api  
     spec:    
-         
       containers:
       - name: bigsi-aggregator
         image: phelimb/bigsi-aggregator
