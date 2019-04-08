@@ -44,7 +44,7 @@ docker build -t phelimb/bigsi-aggregator.
 
 Then create the aggregator service
 
-
 ```
 kubectl create -f k8/bigsi-aggregator-service/bigsi-aggregator-api-deployment.yaml
 ```
+
