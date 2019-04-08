@@ -15,20 +15,15 @@ Queries create a backgroud task which query all the BIGSIs in the array. The res
 
 ### Create a BIGSI service for each of the INDEXes
 
-e.g.
 
 ```
-## BIGSI config
-kubectl create -f k8/bigsi-services/bigsi-1/bigsi-config.yaml
-kubectl create -f k8/bigsi-services/bigsi-1/env.yaml
 ## Volume mounts
 kubectl create -f k8/bigsi-services/bigsi-1/pv-volume.yaml ## This needs to be updated to use a local path! 
 kubectl create -f k8/bigsi-services/bigsi-1/pv-claim.yaml
 ## BIGSI API services
-kubectl create -f k8/bigsi-services/bigsi-1/bigsi-service.yaml
 kubectl create -f k8/bigsi-services/bigsi-1/bigsi-deployment.yaml
-## You can test these are working by running 
 
+## You can test these are working by running 
 kubectl exec -it bigsi-1-deployment-f6c8c9c5-76nzt 
 curl localhost:8001/search?seq=CGGCGAGGAAGCGTTAAATCTCTTTCTGACG 
 ###(after installing curl if required)
