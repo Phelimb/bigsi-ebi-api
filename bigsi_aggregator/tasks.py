@@ -20,7 +20,7 @@ class BigsiClient:
         ).json()
         return results
 
-    def variant_search(self, reference, ref, pos, alt, genbank, gene):
+    def variant_search(self, reference, ref, pos, alt, genbank=None, gene=None):
         url = "{base_url}/variant_search".format(base_url=self.base_url)
         results = requests.post(
             url,
@@ -48,7 +48,7 @@ def search_bigsi_and_update_results(url, sequence_search_id):
 
 @celery.task(name="variant_search_bigsi_and_update_results")
 def variant_search_bigsi_and_update_results(url, variant_search_id):
-    variant_search = SequenceSearch.get_by_id(variant_search_id)
+    variant_search = VariantSearch.get_by_id(variant_search_id)
     bigsi_client = BigsiClient(url)
     bigsi_search_results = bigsi_client.variant_search(
         variant_search.reference,

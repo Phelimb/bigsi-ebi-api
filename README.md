@@ -13,6 +13,18 @@ This API only provides read-only access to the `search` endpoint, creation and u
 
 Queries create a backgroud task which query all the BIGSIs in the array. The results are aggregated and cached in redis for 48 hours and are given a unique endpoint to lookup results. This URL can be polled to get the latests results. 
 
+## Dev
+
+```
+flask run
+
+curl -X POST  -H "Content-Type: application/json"  -d '{"seq":"CGGCGAGGAAGCGTTAAATCTCTTTCTGACG"}' localhost:5000/api/v1/searches/
+
+curl -X POST  -H "Content-Type: application/json"  -d '{"reference":"/Users/phelimb/git/mykrobe-atlas-cli/src/mykrobe/data/NC_000962.3.fasta", "ref": "G", "pos":100, "alt":"T"}' localhost:5000/api/v1/variant_searches/
+
+curl -X POST  -H "Content-Type: application/json"  -d '{"reference":"/Users/phelimb/git/mykrobe-atlas-cli/src/mykrobe/data/NC_000962.3.fasta", "ref": "S", "pos":450, "alt":"L", "genbank":"/Users/phelimb/git/mykrobe-atlas-cli/src/mykrobe/data/NC_000962.3.gb", "gene":"rpoB450"}' localhost:5000/api/v1/variant_searches/
+
+ ```
 ### Create a BIGSI service for each of the INDEXes
 
 
