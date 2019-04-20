@@ -9,7 +9,6 @@ ADD . /bigsi-aggregator/
 
 RUN pip install -r requirements.txt
 RUN pip install uWSGI==2.0.18
-EXPOSE 80
 
 CMD uwsgi --http :80 --harakiri 300  --buffer-size=65535 --protocol=http -w wsgi
 
