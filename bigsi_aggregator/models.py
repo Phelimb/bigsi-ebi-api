@@ -63,6 +63,16 @@ class BaseSearch:
     def progress(self):
         return self.completed_bigsi_queries / self.total_bigsi_queries
 
+    def add_results(self, results):
+        search_results_key = self.generate_search_results_key(self.id)
+        for res in results:
+            r.hset(self.search_results_key, res["sample_name"], json.dumps(res))
+        self.incr_completed_queries()
+        self.set_ttl()
+
+    def incr_completed_queries(self):
+        r.hincrby(self.search_key, constants.COMPLETED_BIGSI_QUERIES_COUNT_KEY, 1)
+
 
 class SequenceSearch(BaseSearch):
     def __init__(
@@ -131,16 +141,6 @@ class SequenceSearch(BaseSearch):
         )
         _hash = hashlib.sha224(string.encode("utf-8")).hexdigest()[:24]
         return _hash
-
-    def add_results(self, results):
-        search_results_key = self.generate_search_results_key(self.id)
-        for res in results:
-            r.hset(self.search_results_key, res["sample_name"], json.dumps(res))
-        self.incr_completed_queries()
-        self.set_ttl()
-
-    def incr_completed_queries(self):
-        r.hincrby(self.search_key, constants.COMPLETED_BIGSI_QUERIES_COUNT_KEY, 1)
 
 
 class VariantSearch(BaseSearch):

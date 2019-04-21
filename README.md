@@ -19,10 +19,18 @@ Queries create a backgroud task which query all the BIGSIs in the array. The res
 flask run
 
 curl -X POST  -H "Content-Type: application/json"  -d '{"seq":"CGGCGAGGAAGCGTTAAATCTCTTTCTGACG"}' localhost:5000/api/v1/searches/
+curl localhost:5000/api/v1/searches/7cddc4de43abdfab233a4a17
+
 
 curl -X POST  -H "Content-Type: application/json"  -d '{"reference":"/Users/phelimb/git/mykrobe-atlas-cli/src/mykrobe/data/NC_000962.3.fasta", "ref": "G", "pos":100, "alt":"T"}' localhost:5000/api/v1/variant_searches/
 
-curl -X POST  -H "Content-Type: application/json"  -d '{"reference":"/Users/phelimb/git/mykrobe-atlas-cli/src/mykrobe/data/NC_000962.3.fasta", "ref": "S", "pos":450, "alt":"L", "genbank":"/Users/phelimb/git/mykrobe-atlas-cli/src/mykrobe/data/NC_000962.3.gb", "gene":"rpoB450"}' localhost:5000/api/v1/variant_searches/
+curl localhost:5000/api/v1/variant_searches/ec36d0cc707093f4094197c0
+
+
+curl -X POST  -H "Content-Type: application/json"  -d '{"reference":"/Users/phelimb/git/mykrobe-atlas-cli/src/mykrobe/data/NC_000962.3.fasta", "ref": "S", "pos":450, "alt":"L", "genbank":"/Users/phelimb/git/mykrobe-atlas-cli/src/mykrobe/data/NC_000962.3.gb", "gene":"rpoB"}' localhost:5000/api/v1/variant_searches/
+
+curl localhost:5000/api/v1/variant_searches/4b49d251151b3ef23e88773f
+
 
  ```
 ### Create a BIGSI service for each of the INDEXes
