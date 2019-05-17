@@ -24,8 +24,8 @@ spec:
         app: bigsi-aggregator-api  
     spec:    
       containers:
-      - name: bigsi-aggregator:210419
-        image: phelimb/bigsi-aggregator
+      - name: bigsi-aggregator
+        image: phelimb/bigsi-aggregator:210419
         imagePullPolicy: Never
         command: ["/bin/sh"]
         args: ["-c","uwsgi --http :80  --harakiri 300  --buffer-size=65535  -w wsgi"]
