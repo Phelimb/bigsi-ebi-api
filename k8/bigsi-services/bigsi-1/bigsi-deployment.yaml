@@ -38,8 +38,8 @@ spec:
     spec:    
       volumes:
         - name: bigsi-1-hostpath
-          path: /nfs/public/release/zi/bigsi/phelim/
-          type: Directory
+            path: /nfs/public/release/zi/bigsi/phelim/
+            type: Directory
         - name: configmap-volume
           configMap:
             name: bigsi-1-config              
