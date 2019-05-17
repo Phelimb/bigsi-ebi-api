@@ -15,7 +15,7 @@ data:
     storage-engine: berkeleydb
     storage-config:
       filename: /data/test-bigsi-bdb
-      flag: "c" ## Change to 'r' for read-only access
+      flag: "r" ## Change to 'r' for read-only access
 kind: ConfigMap
 metadata:
   name: bigsi-1-config
