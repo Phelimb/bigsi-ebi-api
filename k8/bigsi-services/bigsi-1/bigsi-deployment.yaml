@@ -14,7 +14,7 @@ data:
     nproc: 1
     storage-engine: berkeleydb
     storage-config:
-      filename: /nfs/public/release/zi/bigsi/phelim/test-bigsi-bdb
+      filename: /data/test-bigsi-bdb
       flag: "c" ## Change to 'r' for read-only access
 kind: ConfigMap
 metadata:
@@ -52,6 +52,8 @@ spec:
         ports:
           - containerPort: 80
         volumeMounts:
+          - mountPath: /data
+            name: bigsi-1-hostpath
           - mountPath: /etc/bigsi/conf/
             name: configmap-volume  
         envFrom:
