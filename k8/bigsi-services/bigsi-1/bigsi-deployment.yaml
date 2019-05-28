@@ -10,12 +10,12 @@ data:
   config.yaml: |-
     h: 1
     k: 31
-    m: 28000000
+    m: 2800000
     nproc: 1
-    storage-engine: berkeleydb
+    storage-engine: rocksdb
     storage-config:
-      filename: /data/test-bigsi-bdb
-      flag: "r" ## Change to 'r' for read-only access
+      filename: /data/bigsiIndices/gtt5Ltt6        
+      read_only: true
 kind: ConfigMap
 metadata:
   name: bigsi-1-config
@@ -39,7 +39,7 @@ spec:
       volumes:
         - name: bigsi-1-hostpath
           hostPath:
-            path: /nfs/public/release/zi/bigsi/phelim/
+            path: /nfs/public/release/zi/bigsi/
             type: Directory
         - name: configmap-volume
           configMap:
